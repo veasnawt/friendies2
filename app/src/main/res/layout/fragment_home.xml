@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/topview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="25dp">
+
+            <TextView
+                android:id="@+id/txtDiscover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Discover"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/userpic"
+                app:civ_border_width="1dp"
+                app:civ_border_color="#EEE"
+                android:layout_alignParentRight="true"/>
+
+            <SearchView
+                android:id="@+id/searchbar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:clickable="true"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:queryHint="@string/search"
+                android:layout_below="@+id/txtDiscover"
+                android:background="@drawable/rounded_searchbar"/>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/topview"
+            android:paddingHorizontal="25dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Popular"
+                    android:textSize="20sp"/>
+
+                <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                    android:id="@+id/popular_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:msrv_gravity="start"
+                    app:msrv_ms_per_inch="100"
+                    app:msrv_snap_count="5"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recently Added"
+                    android:textSize="20sp"/>
+
+                <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                    android:id="@+id/recently_added_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:msrv_gravity="start"
+                    app:msrv_ms_per_inch="100"
+                    app:msrv_snap_count="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Most Downloads"
+                    android:textSize="20sp"/>
+
+                <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                    android:id="@+id/most_downloads_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:msrv_gravity="start"
+                    app:msrv_ms_per_inch="100"
+                    app:msrv_snap_count="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Others"
+                    android:textSize="20sp"/>
+
+                <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                    android:id="@+id/other_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:msrv_gravity="start"
+                    app:msrv_ms_per_inch="100"
+                    app:msrv_snap_count="1"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+
+    </RelativeLayout>
+</RelativeLayout>
