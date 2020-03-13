@@ -42,9 +42,9 @@
                 android:clickable="true"
                 android:layout_marginTop="20dp"
                 android:padding="10dp"
+                android:background="@drawable/rounded_searchbar"
                 android:queryHint="@string/search"
-                android:layout_below="@+id/txtDiscover"
-                android:background="@drawable/rounded_searchbar"/>
+                android:layout_below="@+id/txtDiscover"/>
 
         </RelativeLayout>
 

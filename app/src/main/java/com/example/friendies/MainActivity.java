@@ -1,6 +1,7 @@
 package com.example.friendies;
 
 import android.os.Bundle;
+import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
