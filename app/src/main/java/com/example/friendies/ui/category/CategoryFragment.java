@@ -33,7 +33,7 @@ public class CategoryFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_category,container,false);
-        recyclerView=root.findViewById(R.id.recyclerver_category);
+        recyclerView=root.findViewById(R.id.recyclerview_category);
         list = new ArrayList<>();
 
         for (int i=0; i<10;i++){
