@@ -1,9 +1,13 @@
 package com.example.friendies.ui.home;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
@@ -28,8 +32,8 @@ public class HomeFragment extends Fragment {
         listPopularMoadel = new ArrayList<>();
         for (int i=0;i<3;i++){
             PopularItemModel model = new PopularItemModel();
-            model.setId(i+1);
-            model.setUrl_imgCover("https://4.bp.blogspot.com/-Ur_U1Lryjlw/VE3j6LZaWlI/AAAAAAAAAI0/r9OKbX2vfKo/s1600/6.jpg");
+            model.setId(i);
+            model.setImgCover(R.drawable.popularbook);
             listPopularMoadel.add(model);
         }
         recyclerViewPopularItem.setLayoutManager(new LinearLayoutManager(root.getContext()));

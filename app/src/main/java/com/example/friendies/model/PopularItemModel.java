@@ -1,8 +1,7 @@
 package com.example.friendies.model;
 
 public class PopularItemModel {
-    int id;
-    String url_imgCover;
+    int id, imgCover;
 
     public int getId() {
         return id;
@@ -12,11 +11,11 @@ public class PopularItemModel {
         this.id = id;
     }
 
-    public String getUrl_imgCover() {
-        return url_imgCover;
+    public int getImgCover() {
+        return imgCover;
     }
 
-    public void setUrl_imgCover(String url_imgCover) {
-        this.url_imgCover = url_imgCover;
+    public void setImgCover(int imgCover) {
+        this.imgCover = imgCover;
     }
 }
