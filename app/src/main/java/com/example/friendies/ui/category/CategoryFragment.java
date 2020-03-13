@@ -45,9 +45,6 @@ public class CategoryFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(root.getContext(),2));
         adapter=new CategoryAdapter(root.getContext(),list);
         recyclerView.setAdapter(adapter);
-
-
-
         return root;
 
     }

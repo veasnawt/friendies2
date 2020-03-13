@@ -65,15 +65,10 @@
                     android:text="Popular"
                     android:textSize="20sp"/>
 
-                <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/popular_recyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    app:msrv_gravity="start"
-                    app:msrv_ms_per_inch="100"
-                    app:msrv_snap_count="5"/>
+                    android:layout_height="170dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -81,15 +76,10 @@
                     android:text="Recently Added"
                     android:textSize="20sp"/>
 
-                <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recently_added_recyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    app:msrv_gravity="start"
-                    app:msrv_ms_per_inch="100"
-                    app:msrv_snap_count="1" />
+                    android:layout_height="170dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -97,15 +87,10 @@
                     android:text="Most Downloads"
                     android:textSize="20sp"/>
 
-                <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/most_downloads_recyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    app:msrv_gravity="start"
-                    app:msrv_ms_per_inch="100"
-                    app:msrv_snap_count="1"/>
+                    android:layout_height="170dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -113,15 +98,10 @@
                     android:text="Others"
                     android:textSize="20sp"/>
 
-                <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/other_recyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    app:msrv_gravity="start"
-                    app:msrv_ms_per_inch="100"
-                    app:msrv_snap_count="1"/>
+                    android:layout_height="170dp"/>
 
             </LinearLayout>
         </ScrollView>
