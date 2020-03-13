@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.category.CategoryFragment">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -46,7 +45,5 @@
                 android:layout_below="@+id/txtDiscover"
                 android:background="@drawable/rounded_searchbar"/>
         </RelativeLayout>
-
-
     </RelativeLayout>
 </RelativeLayout>

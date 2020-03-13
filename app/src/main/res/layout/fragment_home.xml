@@ -44,7 +44,7 @@
                 android:padding="10dp"
                 android:background="@drawable/rounded_searchbar"
                 android:queryHint="@string/search"
-                android:layout_below="@+id/txtDiscover"/>
+                android:layout_below="@+id/txtDiscover" />
 
         </RelativeLayout>
 
