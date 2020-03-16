@@ -4,9 +4,9 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="170dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginRight="10dp"
         android:paddingTop="10dp">
 
         <androidx.cardview.widget.CardView
