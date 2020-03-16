@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/topview"
-            android:paddingHorizontal="25dp">
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -63,45 +63,57 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Popular"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:paddingHorizontal="25dp"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/popular_recyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"/>
+                    android:layout_height="170dp"
+                    android:paddingLeft="25dp"
+                    android:clipToPadding = "false"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Recently Added"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:paddingHorizontal="25dp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recently_added_recyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"/>
+                    android:layout_height="170dp"
+                    android:paddingLeft="20dp"
+                    android:clipToPadding = "false"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Most Downloads"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:paddingHorizontal="25dp"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/most_downloads_recyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="170dp" />
+                    android:layout_height="170dp"
+                    android:paddingLeft="20dp"
+                    android:clipToPadding = "false"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Others"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:paddingHorizontal="25dp"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/other_recyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"/>
+                    android:layout_height="170dp"
+                    android:paddingLeft="20dp"
+                    android:clipToPadding = "false"/>
 
             </LinearLayout>
         </ScrollView>
