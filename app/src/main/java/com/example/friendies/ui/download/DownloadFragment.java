@@ -15,20 +15,13 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.friendies.R;
 
 public class DownloadFragment extends Fragment {
-    private DownloadViewModel downloadViewModel;
 
+
+    View root;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        downloadViewModel= ViewModelProviders.of(this).get(DownloadViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_download, container, false);
-        final TextView textView = root.findViewById(R.id.text_download);
-        downloadViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        root = inflater.inflate(R.layout.fragment_download,container,false);
         return root;
     }
 }

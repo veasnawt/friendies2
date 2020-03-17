@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp">
+
+        <TextView
+            android:id="@+id/txtAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="friendies"
+            android:textSize="40sp"
+            android:textAllCaps="true"
+            android:layout_marginVertical="50dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:textColor="#B25FCF"/>
+
+        <EditText
+            android:id="@+id/edtUsername"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="20dp"
+            android:background="@drawable/rounded_shape"
+            android:hint="Username"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"
+            android:layout_below="@+id/txtAppName"/>
+        <EditText
+            android:id="@+id/edtPass"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:paddingVertical="20dp"
+            android:background="@drawable/rounded_shape"
+            android:hint="Password"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"
+            android:layout_below="@+id/edtUsername"
+            android:layout_marginTop="30dp"/>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:textAllCaps="true"
+            android:background="@drawable/rounded_shape"
+            android:padding="17dp"
+            android:layout_below="@+id/edtPass"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#9956C0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Signup"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:layout_below="@+id/btnLogin"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="skip"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="45dp"
+        android:textColor="#E979FD"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.friendies.R;
 
 public class PopularItemholder extends RecyclerView.ViewHolder {
-    public ImageView imageViewUrlImgCover;
+    public ImageView imgCover;
 
     public PopularItemholder(@NonNull View itemView) {
         super(itemView);
-        imageViewUrlImgCover=itemView.findViewById(R.id.imgCover);
+        imgCover=itemView.findViewById(R.id.imgCover);
     }
 }

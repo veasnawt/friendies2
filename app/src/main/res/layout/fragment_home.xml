@@ -42,9 +42,12 @@
                 android:clickable="true"
                 android:layout_marginTop="20dp"
                 android:padding="10dp"
+                android:background="@drawable/rounded_searchbar"
                 android:queryHint="@string/search"
+                android:iconifiedByDefault="false"
+                android:queryBackground="@android:color/transparent"
                 android:layout_below="@+id/txtDiscover"
-                android:background="@drawable/rounded_searchbar"/>
+                android:focusableInTouchMode="true"/>
 
         </RelativeLayout>
 
@@ -52,76 +55,128 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/topview"
-            android:paddingHorizontal="25dp">
+            android:scrollbars="none">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Popular"
-                    android:textSize="20sp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Popular"
+                        android:textSize="20sp"
+                        android:paddingLeft="25dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="See all"
+                        android:textColor="#0000FF"
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="30dp"
+                        android:layout_marginTop="7dp"/>
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/popular_recyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="170dp"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    app:msrv_gravity="start"
-                    app:msrv_ms_per_inch="100"
-                    app:msrv_snap_count="5"/>
+                    android:layout_height="160dp"
+                    android:paddingLeft="25dp"
+                    android:clipToPadding = "false"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Recently Added"
-                    android:textSize="20sp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recently Added"
+                        android:textSize="20sp"
+                        android:paddingLeft="25dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="See all"
+                        android:textColor="#0000FF"
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="30dp"
+                        android:layout_marginTop="7dp"/>
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recently_added_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    app:msrv_gravity="start"
-                    app:msrv_ms_per_inch="100"
-                    app:msrv_snap_count="1" />
+                    android:paddingLeft="20dp"
+                    android:clipToPadding = "false"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Most Downloads"
-                    android:textSize="20sp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Most Downloads"
+                        android:textSize="20sp"
+                        android:paddingLeft="25dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="See all"
+                        android:textColor="#0000FF"
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="30dp"
+                        android:layout_marginTop="7dp"/>
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/most_downloads_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    app:msrv_gravity="start"
-                    app:msrv_ms_per_inch="100"
-                    app:msrv_snap_count="1"/>
+                    android:paddingLeft="20dp"
+                    android:clipToPadding = "false"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Others"
-                    android:textSize="20sp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <com.takusemba.multisnaprecyclerview.MultiSnapRecyclerView
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Others"
+                        android:textSize="20sp"
+                        android:paddingHorizontal="25dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="See all"
+                        android:textColor="#0000FF"
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="30dp"
+                        android:layout_marginTop="7dp"/>
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/other_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="170dp"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    app:msrv_gravity="start"
-                    app:msrv_ms_per_inch="100"
-                    app:msrv_snap_count="1"/>
+                    android:paddingLeft="20dp"
+                    android:clipToPadding = "false"/>
 
             </LinearLayout>
         </ScrollView>

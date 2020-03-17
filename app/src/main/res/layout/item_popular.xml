@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingRight="20dp">
 
-    <RelativeLayout
-        android:layout_width="240dp"
-        android:layout_height="140dp"
-        android:layout_margin="10dp">
+    <androidx.cardview.widget.CardView
+        android:layout_width="210dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="15dp">
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/imgCover"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/rounded_shape"
-            android:backgroundTint="#333"/>
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="10dip"
+            app:riv_tile_mode="repeat"/>
 
-    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
