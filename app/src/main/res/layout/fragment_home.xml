@@ -44,7 +44,10 @@
                 android:padding="10dp"
                 android:background="@drawable/rounded_searchbar"
                 android:queryHint="@string/search"
-                android:layout_below="@+id/txtDiscover" />
+                android:iconifiedByDefault="false"
+                android:queryBackground="@android:color/transparent"
+                android:layout_below="@+id/txtDiscover"
+                android:focusableInTouchMode="true"/>
 
         </RelativeLayout>
 
