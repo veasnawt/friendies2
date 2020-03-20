@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/book"
+        android:layout_width="120dp"
+        android:layout_height="220dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cover"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/books_imgCover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="10dip"
+                android:src="@drawable/sololevel"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/books_txtTitle"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Solo Leveling"
+            android:layout_below="@+id/cover"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"/>
+
+        <TextView
+            android:id="@+id/books_txtAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gimi Linee"
+            android:layout_below="@+id/books_txtTitle"
+            android:textSize="13dp"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/book1"
+        android:layout_width="120dp"
+        android:layout_height="220dp"
+        android:layout_toRightOf="@+id/book">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cover1"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/imgCover1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="10dip"
+                android:src="@drawable/lioness"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/txtTitle1"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lioness"
+            android:layout_below="@+id/cover1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"/>
+
+        <TextView
+            android:id="@+id/txtAuthor1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gimi Linee"
+            android:layout_below="@+id/txtTitle1"
+            android:textSize="13dp"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/book2"
+        android:layout_width="120dp"
+        android:layout_height="220dp"
+        android:layout_toRightOf="@+id/book1">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cover2"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/imgCover2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="10dip"
+                android:src="@drawable/sunmoonstars"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/txtTitle2"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sun, Moon, Stars"
+            android:layout_below="@+id/cover2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"/>
+
+        <TextView
+            android:id="@+id/txtAuthor2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gimi Linee"
+            android:layout_below="@+id/txtTitle2"
+            android:textSize="13dp"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
