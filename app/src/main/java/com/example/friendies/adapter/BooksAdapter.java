@@ -14,6 +14,8 @@ import com.example.friendies.model.BooksModel;
 
 import java.util.ArrayList;
 
+import static android.media.CamcorderProfile.get;
+
 public class BooksAdapter extends RecyclerView.Adapter<BooksHolder> {
 
     Context context;
@@ -34,7 +36,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull BooksHolder holder, int position) {
-        holder.imgCover.setImageResource(R.drawable.sololevel);
+        holder.imgCover.setImageResource(listBooks.get(position).getImgCover());
         holder.txtTitle.setText(listBooks.get(position).getTitle());
         holder.txtAuthor.setText(listBooks.get(position).getAuthor());
     }

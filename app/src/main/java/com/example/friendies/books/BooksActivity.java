@@ -39,9 +39,19 @@ public class BooksActivity extends AppCompatActivity {
 
         for (int i = 0; i < 20;i++) {
             BooksModel model = new BooksModel();
-            model.setTitle("Solo Leveling");
-            model.setAuthor("Gimee Lee");
-            model.setImgCover(R.drawable.sololevel);
+            if(i % 2 == 0){
+                model.setTitle("Solo Leveling");
+                model.setAuthor("Gimee Lee");
+                model.setImgCover(R.drawable.sololevel);;
+            }else if(i % 3 == 0) {
+                model.setTitle("Lioness");
+                model.setAuthor("Gimee Lee");
+                model.setImgCover(R.drawable.lioness);
+            }else {
+                model.setTitle("Sun, Moon, Stars");
+                model.setAuthor("Gimee Lee");
+                model.setImgCover(R.drawable.sunmoonstars);
+            }
             listBooks.add(model);
         }
 
