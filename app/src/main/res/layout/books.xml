@@ -18,14 +18,15 @@
             android:layout_marginTop="7dp"/>
 
         <TextView
-            android:id="@+id/txtDiscover"
+            android:id="@+id/txtCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Discover"
-            android:textSize="30sp"
+            android:text="RecentlyAdded"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:layout_toRightOf="@+id/imgBack"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="7dp"/>
 
         <ImageView
             android:layout_width="30dp"
@@ -39,7 +40,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/topview">
+        android:layout_below="@+id/topview"
+        android:scrollbars="none">
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -20,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.friendies.MainActivity;
 import com.example.friendies.R;
 import com.example.friendies.adapter.MostDownloadsItemAdapter;
 import com.example.friendies.adapter.OtherItemAdapter;
@@ -54,6 +56,7 @@ public class HomeFragment extends Fragment {
     OtherItemAdapter otherItemAdapter;
 
     CardView recentlyAddedBook;
+    TextView recently_added_book_see_all;
 
     private RequestQueue requestQueue;
 
@@ -68,6 +71,7 @@ public class HomeFragment extends Fragment {
         recyclerviewOtherItem = root.findViewById(R.id.other_recyclerview);
 
         recentlyAddedBook = root.findViewById(R.id.recently_added_book);
+        recently_added_book_see_all = root.findViewById(R.id.recently_added_book_see_all);
 
         // Popular List
         listPopularModel = new ArrayList<>();
@@ -154,19 +158,12 @@ public class HomeFragment extends Fragment {
 
 
         // Book Onclick
-
-        recyclerViewRecentlyAddedItem.addOnItemTouchListener(
-                new RecyclerItemClickListener(root.getContext(), recyclerViewRecentlyAddedItem ,new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
-                        Intent intent = new Intent(HomeFragment.this.getActivity(), BooksActivity.class);
-                        startActivity(intent);
-                    }
-
-                    @Override public void onLongItemClick(View view, int position) {
-                        // do whatever
-                    }
-                })
-        );
+        recently_added_book_see_all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeFragment.this.getActivity(), BooksActivity.class));
+            }
+        });
 
         return root;
     }

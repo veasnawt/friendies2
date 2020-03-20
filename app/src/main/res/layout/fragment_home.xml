@@ -114,6 +114,7 @@
                         android:paddingLeft="25dp" />
 
                     <TextView
+                        android:id="@+id/recently_added_book_see_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="See all"
