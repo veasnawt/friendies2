@@ -2,6 +2,7 @@ package com.example.friendies.ui.home;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,13 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.friendies.MainActivity;
 import com.example.friendies.R;
 import com.example.friendies.adapter.MostDownloadsItemAdapter;
@@ -24,6 +32,10 @@ import com.example.friendies.model.MostDownloadsItemModel;
 import com.example.friendies.model.OtherItemModel;
 import com.example.friendies.model.PopularItemModel;
 import com.example.friendies.model.RecentlyAddedItemModel;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -44,6 +56,8 @@ public class HomeFragment extends Fragment {
 
     LinearLayoutManager horizontalLayout;
 
+    private RequestQueue requestQueue;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -59,6 +73,29 @@ public class HomeFragment extends Fragment {
         listRecentlyAddedModel = new ArrayList<>();
         listMostDownloadsModel = new ArrayList<>();
         listOtherModel = new ArrayList<>();
+
+        requestQueue = Volley.newRequestQueue(root.getContext());
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, "http://127.0.0.1:8000/api/book/read", null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                for(int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        Log.d("JSONArray", "onResponse: " + jsonObject.getString("title"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Error", "onErrorResponse: " + error.getMessage());
+            }
+        });
+        requestQueue.add(jsonArrayRequest);
 
         for (int i=0;i<7;i++) {
 
