@@ -3,6 +3,7 @@ package com.example.friendies.books;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class BookDetailsActivity extends AppCompatActivity {
     UserRatingsAdapter userRatingsAdapter;
 
     ImageView imgBack;
+    Button btnRead;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class BookDetailsActivity extends AppCompatActivity {
         recyclerviewUserRatings = findViewById(R.id.recylerview_user_ratings);
 
         imgBack = findViewById(R.id.imgBack);
+        btnRead = findViewById(R.id.btnRead);
 
         listUserRatingsModel = new ArrayList<>();
 
@@ -54,6 +57,13 @@ public class BookDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(BookDetailsActivity.this, BooksActivity.class));
+            }
+        });
+
+        btnRead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BookDetailsActivity.this, PDFView.class));
             }
         });
 
