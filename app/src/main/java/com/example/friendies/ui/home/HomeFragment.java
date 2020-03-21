@@ -107,7 +107,7 @@ public class HomeFragment extends Fragment {
             // Popular Item
             PopularItemModel model = new PopularItemModel();
             model.setId(i);
-            model.setImgCover(R.drawable.popularbook);
+            model.setImgCover(R.drawable.sololevel_cover);
             listPopularModel.add(model);
 
             // Recently Added Item;

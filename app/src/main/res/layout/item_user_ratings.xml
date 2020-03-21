@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/img_userpic"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:riv_corner_radius="30dip"
+        android:src="@drawable/userpic"/>
+
+    <TextView
+        android:id="@+id/txtUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mee Mee"
+        android:layout_toRightOf="@+id/img_userpic"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/txtUserRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4 Stars"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_below="@+id/txtUsername"
+        android:layout_toRightOf="@+id/img_userpic"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/txtUserOpinion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Opinion: I love this book so much, it is so fun to read, everyone should read this book. I can't wait to see more books like this!"
+        android:layout_below="@+id/img_userpic"
+        android:paddingBottom="10dp"/>
+
+</RelativeLayout>

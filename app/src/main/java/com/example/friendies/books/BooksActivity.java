@@ -72,7 +72,7 @@ public class BooksActivity extends AppCompatActivity {
         recyclerviewBooks.addOnItemTouchListener(
                 new RecyclerItemClickListener(this, recyclerviewBooks ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                        Intent intent = new Intent(BooksActivity.this, BooksActivity.class);
+                        Intent intent = new Intent(BooksActivity.this, BookDetailsActivity.class);
                         startActivity(intent);
                     }
 
