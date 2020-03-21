@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,9 +14,12 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.Request.Method;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.friendies.MainActivity;
@@ -35,8 +39,9 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tv_Signup, tv_skip;
     private Button btn_login;
     private ProgressBar loading;
+    private RequestQueue mQueue;
 
-    private final static String URL_LOGIN="http://192.168.0.112/login.php";
+    private final static String URL_LOGIN="http://192.168.0.112:8000/api/user/show";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
         btn_login=findViewById(R.id.btnLogin);
         tv_skip = findViewById(R.id.tvSkip);
         loading= findViewById(R.id.login_loading);
+        mQueue = Volley.newRequestQueue(this);
+
 
 
         tv_skip.setOnClickListener(new View.OnClickListener() {
@@ -85,57 +92,57 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void Login(final String email, final String password){
+    private void Login(final String Email, final String password) {
+
         loading.setVisibility(View.VISIBLE);
         btn_login.setVisibility(View.GONE);
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
-                new Response.Listener<String>() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, URL_LOGIN, null,
+                new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(JSONObject response) {
+                        int tr = 0;
                         try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
-                            JSONArray jsonArray = jsonObject.getJSONArray("login");
-                            if(success.equals("1")){
-                                for (int i=0; i<jsonObject.length();i++){
-                                    JSONObject object = jsonArray.getJSONObject(i);
+                            JSONArray jsonArray = response.getJSONArray("login");
 
-                                    String name = object.getString("name").trim();
-                                    String email = object.getString("email").trim();
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                    Toast.makeText(LoginActivity.this,"Success Login. \nName : "+name+"\nEmail : "+email, Toast.LENGTH_SHORT).show();
+                                String mEmail = jsonObject.getString("email");
+                                String mPassword = jsonObject.getString("password");
+
+                                if (Email.equals(mEmail) && password.equals(mPassword)){
+                                    Toast.makeText(LoginActivity.this,"Login successful", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                    tr=1;
+                                    break;
                                 }
+
+                            }
+                            if (tr == 0){
+                                Toast.makeText(LoginActivity.this,"Incorrect email or Password", Toast.LENGTH_SHORT).show();
+                                loading.setVisibility(View.GONE);
+                                btn_login.setVisibility(View.VISIBLE);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            Toast.makeText(LoginActivity.this,"Error"+e.toString(),Toast.LENGTH_SHORT).show();
                             loading.setVisibility(View.GONE);
                             btn_login.setVisibility(View.VISIBLE);
-                            Toast.makeText(LoginActivity.this,"Error "+e.toString(),Toast.LENGTH_SHORT).show();
+
                         }
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        loading.setVisibility(View.GONE);
-                        btn_login.setVisibility(View.VISIBLE);
-                        Toast.makeText(LoginActivity.this,"Error "+error.toString(),Toast.LENGTH_SHORT).show();
-                    }
-                }){
+                }, new Response.ErrorListener() {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("email",email);
-                params.put("password",password);
-                return params;
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                Toast.makeText(LoginActivity.this,"Error"+ error.toString(),Toast.LENGTH_SHORT).show();
+                Log.e("error",error.toString());
+                loading.setVisibility(View.GONE);
+                btn_login.setVisibility(View.VISIBLE);
             }
-        };
+        });
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
-
+        mQueue.add(request);
     }
 
 
