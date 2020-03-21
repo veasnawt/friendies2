@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +27,10 @@ public class BooksActivity extends AppCompatActivity {
     ArrayList<BooksModel> listBooks;
     BooksAdapter booksAdapter;
     ImageView imgBack;
+    ImageView imgSearch;
+    Button btnCancel;
+
+    RelativeLayout layout_searchview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,9 @@ public class BooksActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         imgBack = findViewById(R.id.imgBack);
+        imgSearch = findViewById(R.id.imgSearch);
+        btnCancel = findViewById(R.id.btnCancel);
+        layout_searchview = findViewById(R.id.layout_searchview);
 
         recyclerviewBooks = findViewById(R.id.books_recyclerview);
         listBooks = new ArrayList<>();
@@ -78,6 +87,20 @@ public class BooksActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(BooksActivity.this, HomeFragment.class);
                 startActivity(intent);
+            }
+        });
+
+        imgSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layout_searchview.setVisibility(layout_searchview.VISIBLE);
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                layout_searchview.setVisibility(layout_searchview.INVISIBLE);
             }
         });
 
