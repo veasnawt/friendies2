@@ -15,7 +15,8 @@
             android:id="@+id/topview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="25dp">
+            android:paddingHorizontal="25dp"
+            android:paddingVertical="10dp">
 
             <TextView
                 android:id="@+id/txtDiscover"
@@ -35,18 +36,28 @@
                 app:civ_border_color="#EEE"
                 android:layout_alignParentRight="true"/>
 
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/searchviewlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="25dp"
+            android:layout_below="@+id/topview">
+
             <SearchView
                 android:id="@+id/searchbar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:clickable="true"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
                 android:padding="10dp"
                 android:background="@drawable/rounded_searchbar"
                 android:queryHint="@string/search"
                 android:iconifiedByDefault="false"
                 android:queryBackground="@android:color/transparent"
-                android:layout_below="@+id/txtDiscover"
                 android:focusableInTouchMode="true"/>
 
         </RelativeLayout>
@@ -54,7 +65,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/topview"
+            android:layout_below="@+id/searchviewlayout"
             android:scrollbars="none">
 
             <LinearLayout
@@ -103,6 +114,7 @@
                         android:paddingLeft="25dp" />
 
                     <TextView
+                        android:id="@+id/recently_added_book_see_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="See all"

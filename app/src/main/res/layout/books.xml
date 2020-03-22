@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="20dp">
+
+        <RelativeLayout
+            android:id="@+id/topview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="20dp">
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/back_arrow"
+                android:layout_marginTop="7dp"/>
+
+            <TextView
+                android:id="@+id/txtCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RecentlyAdded"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/imgBack"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="7dp"/>
+
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/search"
+                android:layout_marginTop="7dp"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/topview"
+            android:scrollbars="none">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/books_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_searchview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:visibility="invisible">
+
+        <RelativeLayout
+            android:id="@+id/search_topview"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="20dp"
+            android:layout_marginVertical="10dp">
+
+            <SearchView
+                android:id="@+id/searchbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_searchbar"
+                android:queryHint="@string/search"
+                android:iconifiedByDefault="false"
+                android:queryBackground="@android:color/transparent"
+                android:focusableInTouchMode="true"
+                android:layout_toLeftOf="@+id/btnCancel"/>
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:text="Cancel"
+                android:layout_alignParentRight="true"
+                android:background="@null"/>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/search_topview">
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

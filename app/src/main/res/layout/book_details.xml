@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/layout_cover"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <ImageView
+                    android:id="@+id/img_book_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sololevel_cover" />
+
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/back_arrow"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/book_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_cover"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="15dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/books_imgCover"
+                    android:layout_width="105dp"
+                    android:layout_height="160dp"
+                    android:scaleType="centerCrop"
+                    app:riv_corner_radius="10dip"
+                    android:src="@drawable/sololevel"/>
+
+                <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title: Solo Leveling"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/books_imgCover"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/txtAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Author: Chu-Gong"
+                    android:textSize="15sp"
+                    android:layout_toRightOf="@+id/books_imgCover"
+                    android:layout_below="@+id/txtTitle"
+                    android:layout_marginLeft="20dp"/>
+
+                <TextView
+                    android:id="@+id/txtDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Solo Leveling is a South Korean novel written by Chu-Gong, It was serialized in Papyrus[1] and later in KakaoPage[2] and concluded with 14 volumes and 270 chapters."
+                    android:textSize="10sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/books_imgCover"
+                    android:layout_below="@+id/txtAuthor"
+                    android:layout_marginTop="5dp"/>
+
+                <Button
+                    android:id="@+id/btnRead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="Read"
+                    android:layout_below="@+id/txtDescription"
+                    android:layout_toRightOf="@+id/books_imgCover"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_shape" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_metrics"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_below="@+id/book_details"
+                android:paddingHorizontal="20dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".33">
+
+                    <TextView
+                        android:id="@+id/txtCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Category"
+                        android:textSize="15sp"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Action, Fatasy"
+                        android:textSize="15sp"
+                        android:textStyle="italic"
+                        android:layout_below="@+id/txtCategory"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="15dp"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="70dp"
+                    android:background="#c5c5c5" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".33">
+
+                    <TextView
+                        android:id="@+id/txtDownloads"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Downloads"
+                        android:textSize="15sp"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100K+"
+                        android:textSize="15sp"
+                        android:textStyle="italic"
+                        android:layout_below="@+id/txtDownloads"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="15dp"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="70dp"
+                    android:background="#c5c5c5" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".33">
+
+                    <TextView
+                        android:id="@+id/txtRatings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ratings"
+                        android:textSize="15sp"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4 Stars"
+                        android:textSize="15sp"
+                        android:textStyle="italic"
+                        android:layout_below="@+id/txtRatings"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="15dp"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_download"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@+id/layout_metrics"
+                android:paddingHorizontal="20dp">
+
+                <Button
+                    android:id="@+id/btnDownload"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Download"
+                    android:textColor="#fff"
+                    android:textSize="17sp"
+                    android:background="@drawable/rounded_shape"
+                    android:backgroundTint="#9956C0"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/layout_download"
+                android:paddingHorizontal="20dp">
+
+                <LinearLayout
+                    android:id="@+id/layout_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rate This Book:"
+                        android:textSize="20sp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/img_star1"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/star_outline"
+                            android:layout_marginHorizontal="5dp"/>
+
+                        <ImageView
+                            android:id="@+id/img_star2"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/star_outline"
+                            android:layout_toRightOf="@+id/img_star1"
+                            android:layout_marginHorizontal="5dp"/>
+
+                        <ImageView
+                            android:id="@+id/img_star3"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/star_outline"
+                            android:layout_toRightOf="@+id/img_star2"
+                            android:layout_marginHorizontal="5dp"/>
+
+                        <ImageView
+                            android:id="@+id/img_star4"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/star_outline"
+                            android:layout_toRightOf="@+id/img_star3"
+                            android:layout_marginHorizontal="5dp"/>
+
+                        <ImageView
+                            android:id="@+id/img_star5"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/star_outline"
+                            android:layout_toRightOf="@+id/img_star4"
+                            android:layout_marginHorizontal="5dp"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_rating"
+                    android:layout_marginTop="20dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recylerview_user_ratings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

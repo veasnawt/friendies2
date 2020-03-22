@@ -7,69 +7,79 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp">
+        android:layout_marginTop="10dp"
+        android:id="@+id/friendies"
+        android:layout_marginBottom="55dp">
 
         <TextView
             android:id="@+id/txtAppName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="friendies"
-            android:textSize="40sp"
-            android:textAllCaps="true"
-            android:layout_marginVertical="50dp"
-            android:textStyle="bold"
             android:layout_centerHorizontal="true"
-            android:textColor="#B25FCF"/>
+            android:layout_marginVertical="50dp"
+            android:text="friendies"
+            android:textAllCaps="true"
+            android:textColor="#B25FCF"
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/edtUsername"
+            android:id="@+id/edtEmail"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:paddingVertical="20dp"
+            android:layout_below="@+id/txtAppName"
             android:background="@drawable/rounded_shape"
-            android:hint="Username"
             android:gravity="center_horizontal"
-            android:textAlignment="center"
-            android:layout_below="@+id/txtAppName"/>
+            android:hint="Email"
+            android:paddingVertical="20dp"
+            android:textAlignment="center" />
+
         <EditText
             android:id="@+id/edtPass"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:paddingVertical="20dp"
+            android:layout_below="@+id/edtEmail"
+            android:layout_marginTop="30dp"
             android:background="@drawable/rounded_shape"
-            android:hint="Password"
             android:gravity="center_horizontal"
-            android:textAlignment="center"
-            android:layout_below="@+id/edtUsername"
-            android:layout_marginTop="30dp"/>
+            android:hint="Password"
+            android:paddingVertical="20dp"
+            android:textAlignment="center" />
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="#fff"
-            android:textAllCaps="true"
-            android:background="@drawable/rounded_shape"
-            android:padding="17dp"
             android:layout_below="@+id/edtPass"
             android:layout_marginTop="20dp"
-            android:backgroundTint="#9956C0"/>
+            android:background="@drawable/rounded_shape"
+            android:backgroundTint="#9956C0"
+            android:padding="17dp"
+            android:text="Login"
+            android:textAllCaps="true"
+            android:textColor="#fff"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tv_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Signup"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textAllCaps="true"
             android:layout_below="@+id/btnLogin"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"/>
+            android:text="Signup"
+            android:textAllCaps="true"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/friendies"
+        android:id="@+id/login_loading"
+        android:visibility="gone"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -77,6 +87,7 @@
         android:text="skip"
         android:textAllCaps="true"
         android:textSize="18sp"
+        android:id="@+id/tvSkip"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="45dp"
         android:textColor="#E979FD"

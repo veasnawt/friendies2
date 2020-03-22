@@ -12,13 +12,14 @@
         android:id="@+id/topview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="25dp">
+        android:paddingHorizontal="25dp"
+        android:paddingVertical="10dp">
 
         <TextView
             android:id="@+id/txtDiscover"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Downloads"
+            android:text="Discover"
             android:textSize="30sp"
             android:textStyle="bold"/>
 
@@ -32,24 +33,36 @@
             app:civ_border_color="#EEE"
             android:layout_alignParentRight="true"/>
 
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/searchviewlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="25dp"
+        android:layout_below="@+id/topview">
+
         <SearchView
             android:id="@+id/searchbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:clickable="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:padding="10dp"
             android:background="@drawable/rounded_searchbar"
             android:queryHint="@string/search"
             android:iconifiedByDefault="false"
             android:queryBackground="@android:color/transparent"
-            android:layout_below="@+id/txtDiscover"
             android:focusableInTouchMode="true"/>
+
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/download"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/topview"
+        android:layout_below="@+id/searchviewlayout"
         android:layout_width="400dp"
         android:layout_height="150dp">
 
