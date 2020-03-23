@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.friendies.R;
 import com.example.friendies.holder.OtherItemHolder;
 import com.example.friendies.model.OtherItemModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ public class OtherItemAdapter extends RecyclerView.Adapter<OtherItemHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull OtherItemHolder holder, int position) {
-        holder.imgCover.setImageResource(listOtherItemModel.get(position).getImgCover());
+        Picasso.get().load(listOtherItemModel.get(position).getImgCover()).into(holder.imgCover);
         holder.txtTitle.setText(listOtherItemModel.get(position).getTitle());
         holder.txtAuthor.setText(listOtherItemModel.get(position).getAuthor());
     }

@@ -46,7 +46,7 @@ public class BooksActivity extends AppCompatActivity {
         recyclerviewBooks = findViewById(R.id.books_recyclerview);
         listBooks = new ArrayList<>();
 
-        for (int i = 0; i < 20;i++) {
+/*        for (int i = 0; i < 20;i++) {
             BooksModel model = new BooksModel();
             if(i % 2 == 0){
                 model.setTitle("Solo Leveling");
@@ -62,7 +62,7 @@ public class BooksActivity extends AppCompatActivity {
                 model.setImgCover(R.drawable.sunmoonstars);
             }
             listBooks.add(model);
-        }
+        }*/
 
         recyclerviewBooks.setLayoutManager(new GridLayoutManager(this,3));
         booksAdapter = new BooksAdapter(this,listBooks);

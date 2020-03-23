@@ -1,8 +1,8 @@
 package com.example.friendies.model;
 
 public class RecentlyAddedItemModel {
-    int id, imgCover;
-    String title, author;
+    int id;
+    String title, author, imgCover;
 
     public int getId() {
         return id;
@@ -12,11 +12,11 @@ public class RecentlyAddedItemModel {
         this.id = id;
     }
 
-    public int getImgCover() {
+    public String getImgCover() {
         return imgCover;
     }
 
-    public void setImgCover(int imgCover) {
+    public void setImgCover(String imgCover) {
         this.imgCover = imgCover;
     }
 
