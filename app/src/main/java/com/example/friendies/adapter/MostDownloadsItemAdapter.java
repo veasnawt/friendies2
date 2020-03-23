@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.friendies.R;
 import com.example.friendies.holder.MostDownloadsItemHolder;
 import com.example.friendies.model.MostDownloadsItemModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ public class MostDownloadsItemAdapter extends RecyclerView.Adapter<MostDownloads
 
     @Override
     public void onBindViewHolder(@NonNull MostDownloadsItemHolder holder, int position) {
-        holder.imgCover.setImageResource(listMostDownloadsItemModel.get(position).getImgCover());
+        Picasso.get().load(listMostDownloadsItemModel.get(position).getImgCover()).into(holder.imgCover);
         holder.txtTitle.setText(listMostDownloadsItemModel.get(position).getTitle());
         holder.txtAuthor.setText(listMostDownloadsItemModel.get(position).getAuthor());
     }

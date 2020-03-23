@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.friendies.R;
 import com.example.friendies.holder.BooksHolder;
 import com.example.friendies.model.BooksModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -36,7 +37,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull BooksHolder holder, int position) {
-        holder.imgCover.setImageResource(listBooks.get(position).getImgCover());
+        Picasso.get().load(listBooks.get(position).getImgCover()).into(holder.imgCover);
         holder.txtTitle.setText(listBooks.get(position).getTitle());
         holder.txtAuthor.setText(listBooks.get(position).getAuthor());
     }
