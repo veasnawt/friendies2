@@ -1,10 +1,12 @@
 package com.example.friendies.books;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -14,6 +16,7 @@ import com.example.friendies.R;
 import com.example.friendies.adapter.BooksAdapter;
 import com.example.friendies.adapter.UserRatingsAdapter;
 import com.example.friendies.model.UserRatingsModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -26,6 +29,9 @@ public class BookDetailsActivity extends AppCompatActivity {
     ImageView imgBack;
     Button btnRead;
 
+    ImageView img_book_cover, imgCover;
+    TextView title, author, description, category, nod, rating;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +42,31 @@ public class BookDetailsActivity extends AppCompatActivity {
 
         imgBack = findViewById(R.id.imgBack);
         btnRead = findViewById(R.id.btnRead);
+
+        img_book_cover = findViewById(R.id.img_book_cover);
+        imgCover = findViewById(R.id.books_imgCover);
+        title = findViewById(R.id.txtTitle);
+        author = findViewById(R.id.txtAuthor);
+        description = findViewById(R.id.txtDescription);
+        category = findViewById(R.id.books_txtCategory);
+        nod = findViewById(R.id.books_txtDownloads);
+        rating = findViewById(R.id.books_txtRatings);
+
+        Intent intent = getIntent();
+        String book_cover = intent.getStringExtra("BOOK_COVER");
+        String book_image = intent.getStringExtra("BOOK_IMAGE");
+        String book_title = intent.getStringExtra("BOOK_TITLE");
+        String book_author = intent.getStringExtra("BOOK_AUTHOR");
+        String book_description = intent.getStringExtra("BOOK_DESCRIPTION");
+//        int category_id = intent.getIntExtra("BOOK_CATEGORY_ID");
+//        int nod = intent.getIntExtra("BOOK_NOD");
+//        int rating = intent.getIntExtra("BOOK_RATING");
+
+        Picasso.get().load(book_cover).into(img_book_cover);
+        Picasso.get().load(book_image).into(imgCover);
+        title.setText(book_title);
+        author.setText(book_author);
+        description.setText(book_description);
 
         listUserRatingsModel = new ArrayList<>();
 

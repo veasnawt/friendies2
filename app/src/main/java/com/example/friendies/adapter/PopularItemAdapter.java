@@ -34,7 +34,7 @@ public class PopularItemAdapter extends RecyclerView.Adapter<PopularItemholder> 
     @Override
     public void onBindViewHolder(@NonNull PopularItemholder holder, int position) {
 //        holder.imgCover.setImageResource(listPopularModel.get(position).getImgCover());
-         Picasso.get().load(listPopularModel.get(position).getImgCover()).into(holder.imgCover);
+         Picasso.get().load(listPopularModel.get(position).getCover()).into(holder.cover);
     }
 
     @Override

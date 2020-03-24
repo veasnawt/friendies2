@@ -28,6 +28,7 @@ import com.example.friendies.adapter.MostDownloadsItemAdapter;
 import com.example.friendies.adapter.OtherItemAdapter;
 import com.example.friendies.adapter.PopularItemAdapter;
 import com.example.friendies.adapter.RecentlyAddedItemAdapter;
+import com.example.friendies.books.BookDetailsActivity;
 import com.example.friendies.books.BooksActivity;
 import com.example.friendies.model.MostDownloadsItemModel;
 import com.example.friendies.model.OtherItemModel;
@@ -96,6 +97,68 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        // Popular Book Onclick
+        recyclerViewPopularItem.addOnItemTouchListener(
+                new RecyclerItemClickListener(root.getContext(), recyclerViewPopularItem ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+
+                        Intent intent = new Intent(HomeFragment.this.getActivity(), BookDetailsActivity.class);
+                        intent.putExtra("BOOK_COVER", listPopularModel.get(position).getCover());
+                        intent.putExtra("BOOK_TITLE", listPopularModel.get(position).getTitle());
+                        intent.putExtra("BOOK_AUTHOR", listPopularModel.get(position).getAuthor());
+                        intent.putExtra("BOOK_DESCRIPTION", listPopularModel.get(position).getDescription());
+                        intent.putExtra("BOOK_IMAGE", listPopularModel.get(position).getImgCover());
+                        intent.putExtra("BOOK_CATEGORY_ID", listPopularModel.get(position).getCategory_id());
+                        intent.putExtra("BOOK_NOD", listPopularModel.get(position).getNod());
+                        intent.putExtra("BOOK_RATING", listPopularModel.get(position).getRating());
+                        startActivity(intent);
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
+
+        // Recently Added Book Onclick
+        recyclerViewRecentlyAddedItem.addOnItemTouchListener(
+                new RecyclerItemClickListener(root.getContext(), recyclerViewPopularItem ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        startActivity(new Intent(HomeFragment.this.getActivity(), BookDetailsActivity.class));
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
+
+        // Most Downloads Book Onclick
+        recyclerviewMostDownloadsItem.addOnItemTouchListener(
+                new RecyclerItemClickListener(root.getContext(), recyclerViewPopularItem ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        startActivity(new Intent(HomeFragment.this.getActivity(), BookDetailsActivity.class));
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
+
+        // Other Book Onclick
+        recyclerviewOtherItem.addOnItemTouchListener(
+                new RecyclerItemClickListener(root.getContext(), recyclerViewPopularItem ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        startActivity(new Intent(HomeFragment.this.getActivity(), BookDetailsActivity.class));
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
+
         return root;
     }
 
@@ -110,7 +173,15 @@ public class HomeFragment extends Fragment {
                         // Popular Item
                         PopularItemModel popularItemModel = new PopularItemModel();
                         popularItemModel.setId(jsonObject.getInt("id"));
-                        popularItemModel.setImgCover(IMG_URL + jsonObject.getString("cover"));
+                        popularItemModel.setImgCover(IMG_URL + jsonObject.getString("image"));
+                        popularItemModel.setCover(IMG_URL + jsonObject.getString("cover"));
+                        popularItemModel.setTitle(jsonObject.getString("title"));
+                        popularItemModel.setAuthor(jsonObject.getString("author"));
+                        popularItemModel.setDescription(jsonObject.getString("description"));
+                        popularItemModel.setCategory_id(jsonObject.getInt("category_id"));
+                        popularItemModel.setNod(jsonObject.getInt("nod"));
+                        //popularItemModel.setRating(jsonObject.getInt("rating"));
+                        //popularItemModel.setPdf(jsonObject.getString("pdf"));
                         listPopularModel.add(popularItemModel);
 
                         // Recently Added Item
