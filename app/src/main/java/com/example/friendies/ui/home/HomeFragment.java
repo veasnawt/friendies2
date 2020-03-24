@@ -96,7 +96,10 @@ public class HomeFragment extends Fragment {
         popular_book_see_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeFragment.this.getActivity(), BooksActivity.class));
+                String toptext = "Popular";
+                Intent intent = new Intent(HomeFragment.this.getActivity(), BooksActivity.class);
+                intent.putExtra("POPULAR_TOPTEXT", toptext);
+                startActivity(intent);
             }
         });
 
@@ -105,6 +108,10 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomeFragment.this.getActivity(), BooksActivity.class));
+                String toptext = "Recently Added";
+                Intent intent = new Intent(HomeFragment.this.getActivity(), BooksActivity.class);
+                intent.putExtra("RECENTLY_ADDED_TOPTEXT", toptext);
+                startActivity(intent);
             }
         });
 
@@ -112,7 +119,10 @@ public class HomeFragment extends Fragment {
         most_downloads_book_see_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeFragment.this.getActivity(), BooksActivity.class));
+                String toptext = "Most Downloads";
+                Intent intent = new Intent(HomeFragment.this.getActivity(), BooksActivity.class);
+                intent.putExtra("MOST_DOWNLOADS_TOPTEXT", toptext);
+                startActivity(intent);
             }
         });
 
@@ -120,7 +130,10 @@ public class HomeFragment extends Fragment {
         other_book_see_all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeFragment.this.getActivity(), BooksActivity.class));
+                String toptext = "Others";
+                Intent intent = new Intent(HomeFragment.this.getActivity(), BooksActivity.class);
+                intent.putExtra("OTHER_TOPTEXT", toptext);
+                startActivity(intent);
             }
         });
 

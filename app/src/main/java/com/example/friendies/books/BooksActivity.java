@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,6 +52,8 @@ public class BooksActivity extends AppCompatActivity {
 
     RelativeLayout layout_searchview;
 
+    TextView txtCategory;
+
     private RequestQueue requestQueue;
     private final String JSON_URL = "http://192.168.43.56:8000/api/book/read";
     private final String IMG_URL = "http://192.168.43.56:8000/images/";
@@ -67,8 +70,28 @@ public class BooksActivity extends AppCompatActivity {
         btnCancel = findViewById(R.id.btnCancel);
         layout_searchview = findViewById(R.id.layout_searchview);
 
+        txtCategory = findViewById(R.id.txtCategory);
+
         recyclerviewBooks = findViewById(R.id.books_recyclerview);
         listBooks = new ArrayList<>();
+
+        Intent intent = getIntent();
+        String popular_toptext = intent.getStringExtra("POPULAR_TOPTEXT");
+        if(popular_toptext != null) {
+            txtCategory.setText(popular_toptext);
+        }
+        String recently_added_toptext = intent.getStringExtra("RECENTLY_ADDED_TOPTEXT");
+        if(recently_added_toptext != null) {
+            txtCategory.setText(recently_added_toptext);
+        }
+        String most_downloads_toptext = intent.getStringExtra("MOST_DOWNLOADS_TOPTEXT");
+        if(most_downloads_toptext != null) {
+            txtCategory.setText(most_downloads_toptext);
+        }
+        String other_toptext = intent.getStringExtra("OTHER_TOPTEXT");
+        if(other_toptext != null) {
+            txtCategory.setText(other_toptext);
+        }
 
         requestQueue = Volley.newRequestQueue(BooksActivity.this);
 
