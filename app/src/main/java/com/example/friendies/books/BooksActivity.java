@@ -92,6 +92,10 @@ public class BooksActivity extends AppCompatActivity {
         if(other_toptext != null) {
             txtCategory.setText(other_toptext);
         }
+        String category_toptext = intent.getStringExtra("CATEGORY_TOPTEXT");
+        if(category_toptext != null) {
+            txtCategory.setText(category_toptext);
+        }
 
         requestQueue = Volley.newRequestQueue(BooksActivity.this);
 

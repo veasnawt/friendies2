@@ -36,7 +36,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryHolder> {
     @Override
     public void onBindViewHolder(@NonNull CategoryHolder holder, int position) {
         holder.textViewTitle.setText(categoryList.get(position).getTitle());
-        holder.url_img.setImageResource(categoryList.get(position).getUrl_img());
+        Picasso.get().load(categoryList.get(position).getImage()).into(holder.image);
 
     }
 
