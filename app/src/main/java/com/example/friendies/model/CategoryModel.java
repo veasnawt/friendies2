@@ -1,13 +1,14 @@
 package com.example.friendies.model;
 
 public class CategoryModel {
-    String url_img,title;
+    int url_img;
+    String title;
 
-    public String getUrl_img() {
+    public int getUrl_img() {
         return url_img;
     }
 
-    public void setUrl_img(String url_img) {
+    public void setUrl_img(int url_img) {
         this.url_img = url_img;
     }
 

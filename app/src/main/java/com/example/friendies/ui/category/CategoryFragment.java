@@ -38,11 +38,11 @@ public class CategoryFragment extends Fragment {
 
         for (int i=0; i<10;i++){
             CategoryModel model = new CategoryModel();
-            model.setTitle("The RainMaker");
-            model.setUrl_img("https://4.bp.blogspot.com/-Ur_U1Lryjlw/VE3j6LZaWlI/AAAAAAAAAI0/r9OKbX2vfKo/s1600/6.jpg");
+            model.setTitle("Fantasy");
+            model.setUrl_img(R.drawable.fantasy);
             list.add(model);
         }
-        recyclerView.setLayoutManager(new GridLayoutManager(root.getContext(),2));
+        recyclerView.setLayoutManager(new GridLayoutManager(root.getContext(),3));
         adapter=new CategoryAdapter(root.getContext(),list);
         recyclerView.setAdapter(adapter);
         return root;
