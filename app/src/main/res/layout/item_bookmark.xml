@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/bookmark"
+        android:layout_centerHorizontal="true"
+        android:layout_width="400dp"
+        android:layout_height="150dp">
+
+        <RelativeLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img_bookmark"
+                android:layout_width="30dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="340dp"
+                android:src="@drawable/bookmark" />
+
+            <ImageView
+                android:id="@+id/img_Cover_download"
+                android:layout_width="90dp"
+                android:layout_height="130dp"
+                android:src="@drawable/sololevel" />
+
+            <TextView
+                android:layout_toRightOf="@+id/img_Cover_download"
+                android:id="@+id/tv_title"
+                android:textSize="24sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:text="Solo Leveling"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/tv_category"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/tv_title"
+                android:textSize="14sp"
+                android:layout_toRightOf="@+id/img_Cover_download"
+                android:text="Action"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginTop="30dp"
+                android:id="@+id/tv_Remove"
+                android:layout_marginLeft="195dp"
+                android:layout_below="@+id/tv_category"
+                android:textSize="20sp"
+                android:layout_toRightOf="@+id/img_Cover_download"
+                android:text="Remove"
+                android:layout_width="80dp"
+                android:layout_height="30dp"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>
