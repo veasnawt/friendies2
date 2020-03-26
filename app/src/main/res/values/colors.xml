@@ -5,4 +5,8 @@
     <color name="colorAccent">#03DAC5</color>
 
     <color name="textBookTitleCategory">#000</color>
+
+    <color name="textCancelAndDone">#1B63F4</color>
+
+    <color name="bgEditProfile">#DDDBDB</color>
 </resources>
