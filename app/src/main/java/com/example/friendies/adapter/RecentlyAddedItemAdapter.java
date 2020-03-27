@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.friendies.R;
 import com.example.friendies.holder.RecentlyAddedItemHolder;
 import com.example.friendies.model.RecentlyAddedItemModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,7 @@ public class RecentlyAddedItemAdapter extends RecyclerView.Adapter<RecentlyAdded
 
     @Override
     public void onBindViewHolder(@NonNull RecentlyAddedItemHolder holder, int position) {
-        holder.imgCover.setImageResource(listRecentlyAddedItemModel.get(position).getImgCover());
+        Picasso.get().load(listRecentlyAddedItemModel.get(position).getImgCover()).into(holder.imgCover);
         holder.txtTitle.setText(listRecentlyAddedItemModel.get(position).getTitle());
         holder.txtAuthor.setText(listRecentlyAddedItemModel.get(position).getAuthor());
     }

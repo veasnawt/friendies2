@@ -23,7 +23,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/sololevel_cover" />
+                    android:src="@null" />
 
                 <ImageView
                     android:id="@+id/imgBack"
@@ -119,6 +119,7 @@
                         android:layout_centerHorizontal="true"/>
 
                     <TextView
+                        android:id="@+id/books_txtCategory"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Action, Fatasy"
@@ -149,6 +150,7 @@
                         android:layout_centerHorizontal="true"/>
 
                     <TextView
+                        android:id="@+id/books_txtDownloads"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="100K+"
@@ -179,6 +181,7 @@
                         android:layout_centerHorizontal="true"/>
 
                     <TextView
+                        android:id="@+id/books_txtRatings"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4 Stars"

@@ -11,12 +11,12 @@ import com.example.friendies.R;
 
 public class CategoryHolder extends RecyclerView.ViewHolder {
     public TextView textViewTitle;
-    public ImageView url_img;
+    public ImageView image;
 
 
     public CategoryHolder(@NonNull View itemView) {
         super(itemView);
         textViewTitle=itemView.findViewById(R.id.book_title_category);
-        url_img=itemView.findViewById(R.id.image_category);
+        image=itemView.findViewById(R.id.image_category);
     }
 }

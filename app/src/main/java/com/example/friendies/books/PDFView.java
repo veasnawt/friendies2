@@ -23,7 +23,7 @@ public class PDFView extends AppCompatActivity {
         pdfView.fromAsset("veasnawt_cv.pdf")
                 .pages(0, 2, 1, 3, 3, 3) // all pages are displayed by default
                 .enableSwipe(true) // allows to block changing pages using swipe
-                .swipeHorizontal(true)
+                .swipeHorizontal(false)
                 .enableDoubletap(true)
                 .defaultPage(0)
                 .enableAnnotationRendering(false) // render annotations (such as comments, colors or forms)

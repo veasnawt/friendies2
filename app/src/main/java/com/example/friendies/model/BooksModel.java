@@ -1,8 +1,8 @@
 package com.example.friendies.model;
 
 public class BooksModel {
-    int id, imgCover;
-    String title, author;
+    int id, category_id, nod, rating;
+    String imgCover, title, author, description, cover, pdf;
 
     public int getId() {
         return id;
@@ -12,11 +12,35 @@ public class BooksModel {
         this.id = id;
     }
 
-    public int getImgCover() {
+    public int getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(int category_id) {
+        this.category_id = category_id;
+    }
+
+    public int getNod() {
+        return nod;
+    }
+
+    public void setNod(int nod) {
+        this.nod = nod;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public String getImgCover() {
         return imgCover;
     }
 
-    public void setImgCover(int imgCover) {
+    public void setImgCover(String imgCover) {
         this.imgCover = imgCover;
     }
 
@@ -34,5 +58,29 @@ public class BooksModel {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
+
+    public String getPdf() {
+        return pdf;
+    }
+
+    public void setPdf(String pdf) {
+        this.pdf = pdf;
     }
 }

@@ -1,14 +1,23 @@
 package com.example.friendies.model;
 
 public class CategoryModel {
-    String url_img,title;
+    int id;
+    String title, image;
 
-    public String getUrl_img() {
-        return url_img;
+    public int getId() {
+        return id;
     }
 
-    public void setUrl_img(String url_img) {
-        this.url_img = url_img;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getTitle() {
