@@ -54,7 +54,12 @@ public class RegisterActivity extends AppCompatActivity {
         tv_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+                intent.putExtra("profileImage", "");
+                intent.putExtra("email", "");
+                intent.putExtra("name", "");
+                intent.putExtra("password", "");
+                startActivity(intent);
             }
         });
 
@@ -95,7 +100,12 @@ public class RegisterActivity extends AppCompatActivity {
                                     String success = jsonObject.getString("success");
                                     if (success.equals("1")) {
                                         Toast.makeText(RegisterActivity.this, "Register Success!", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                        intent.putExtra("profileImage", "");
+                                        intent.putExtra("email", email);
+                                        intent.putExtra("name", name);
+                                        intent.putExtra("password", password);
+                                        startActivity(intent);
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();

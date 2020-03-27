@@ -62,7 +62,13 @@ public class LoginActivity extends AppCompatActivity {
         tv_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                intent.putExtra("profileImage", "");
+                intent.putExtra("email", "");
+                intent.putExtra("name", "");
+                intent.putExtra("password", "");
+                startActivity(intent);
+
             }
         });
 
@@ -109,11 +115,17 @@ public class LoginActivity extends AppCompatActivity {
 
                                 String mEmail = jsonObject.getString("email");
                                 String mPassword = jsonObject.getString("password");
-
+                                String mProfileImage = jsonObject.getString("profileImg");
+                                String mName = jsonObject.getString("name");
                                 if (Email.equals(mEmail) && password.equals(mPassword)){
                                     Toast.makeText(LoginActivity.this,"Login successful", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                                    tr=1;
+                                   Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                   intent.putExtra("profileImage", mProfileImage);
+                                   intent.putExtra("email", mEmail);
+                                   intent.putExtra("name", mName);
+                                   intent.putExtra("password", mPassword);
+                                   startActivity(intent);
+                                   tr=1;
                                     break;
                                 }
 

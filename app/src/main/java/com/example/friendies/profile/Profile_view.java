@@ -29,10 +29,16 @@ public class Profile_view extends AppCompatActivity {
         logout = findViewById(R.id.logout);
         help = findViewById(R.id.help);
 
+        getSupportActionBar().hide();
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Profile_view.this, MainActivity.class));
+                Intent intent = new Intent(Profile_view.this,MainActivity.class);
+                intent.putExtra("profileImage", MainActivity.URL_IMAGE);
+                intent.putExtra("email", MainActivity.EMAIL);
+                intent.putExtra("name", MainActivity.NAME);
+                intent.putExtra("password", MainActivity.PASSWORD);
+                startActivity(intent);
             }
         });
 

@@ -1,5 +1,6 @@
 package com.example.friendies;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
@@ -17,10 +18,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static String EMAIL, NAME, PASSWORD, URL_IMAGE;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        EMAIL = intent.getStringExtra("email");
+        NAME = intent.getStringExtra("name");
+        PASSWORD = intent.getStringExtra("password");
+        URL_IMAGE = intent.getStringExtra("profileImage");
+
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each

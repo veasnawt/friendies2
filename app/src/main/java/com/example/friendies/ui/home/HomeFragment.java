@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -34,6 +36,8 @@ import com.example.friendies.model.MostDownloadsItemModel;
 import com.example.friendies.model.OtherItemModel;
 import com.example.friendies.model.PopularItemModel;
 import com.example.friendies.model.RecentlyAddedItemModel;
+import com.example.friendies.profile.Profile_view;
+import com.example.friendies.profile.UseSingOutAccount;
 import com.example.friendies.register.RegisterActivity;
 import com.squareup.picasso.Picasso;
 
@@ -58,6 +62,8 @@ public class HomeFragment extends Fragment {
     MostDownloadsItemAdapter mostDownloadsItemAdapter;
     OtherItemAdapter otherItemAdapter;
 
+    ImageView profile;
+
     CardView recentlyAddedBook;
     TextView popular_book_see_all, recently_added_book_see_all, most_downloads_book_see_all, other_book_see_all;
 
@@ -77,6 +83,29 @@ public class HomeFragment extends Fragment {
         recyclerViewRecentlyAddedItem = root.findViewById(R.id.recently_added_recyclerview);
         recyclerviewMostDownloadsItem = root.findViewById(R.id.most_downloads_recyclerview);
         recyclerviewOtherItem = root.findViewById(R.id.other_recyclerview);
+
+        profile=root.findViewById(R.id.profile_image);
+
+        String image = MainActivity.URL_IMAGE;
+
+        if (!image.equals("")){
+            Toast.makeText(root.getContext(), "No", Toast.LENGTH_SHORT).show();
+            Picasso.get().load(MainActivity.URL_IMAGE).into(profile);
+        }
+
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!MainActivity.EMAIL.equals("")){
+                    startActivity(new Intent(root.getContext(), Profile_view.class));
+                }
+                else {
+                    startActivity(new Intent(root.getContext(), UseSingOutAccount.class));
+                }
+
+            }
+        });
 
         recentlyAddedBook = root.findViewById(R.id.recently_added_book);
         popular_book_see_all = root.findViewById(R.id.popular_book_see_all);
