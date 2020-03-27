@@ -14,17 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".profile.SwitchAccount"></activity>
+        <activity android:name=".profile.EditProfile" />
+        <activity android:name=".profile.Profile_view" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".register.RegisterActivity" />
-        <activity android:name=".books.BooksActivity"/>
-        <activity android:name=".books.BookDetailsActivity"/>
-        <activity android:name=".books.PDFView"/>
+        <activity android:name=".books.BooksActivity" />
+        <activity android:name=".books.BookDetailsActivity" />
+        <activity android:name=".books.PDFView" />
         <activity
             android:name=".login.LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

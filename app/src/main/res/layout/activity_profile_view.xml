@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin">
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_cancel"/>
+    <LinearLayout
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/userpic"
+            app:civ_border_width="1dp"
+            app:civ_border_color="#EEE"
+            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:contentDescription="@string/nav_header_desc" />
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:text="@string/nav_header_title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nav_header_subtitle" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#4C4B4B"/>
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/linear_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_marginTop="6dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_edit"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:text="@string/title_edit_profile"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/switch_account"
+            android:layout_below="@+id/linear_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_marginTop="6dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_switch_account"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:text="@string/title_switch_account"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/setting"
+            android:layout_below="@+id/switch_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_marginTop="6dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_settings"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:text="@string/title_setting"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/data"
+            android:layout_below="@+id/setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_marginTop="6dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_data"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:text="@string/title_data"
+                android:layout_marginBottom="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </LinearLayout>
+        <View
+
+            android:layout_width="match_parent"
+            android:id="@+id/hr2"
+            android:layout_height="1dp"
+            android:background="#4C4B4B"
+
+            android:layout_below="@+id/data"/>
+
+
+        <LinearLayout
+            android:id="@+id/logout"
+            android:layout_marginTop="16dp"
+            android:layout_below="@+id/hr2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_marginTop="6dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_logout"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:text="@string/title_logout"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/help"
+            android:layout_below="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_marginTop="6dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_help"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:text="@string/title_help"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
