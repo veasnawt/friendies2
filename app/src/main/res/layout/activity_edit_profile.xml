@@ -11,8 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/bgEditProfile">
+        android:orientation="vertical">
+<!--        android:background="@color/bgEditProfile">-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
+p
         </LinearLayout>
 
         <LinearLayout
@@ -96,6 +96,7 @@
             android:gravity="center"
             android:layout_margin="@dimen/item_profile">
             <EditText
+                android:id="@+id/edit_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username"/>
@@ -108,8 +109,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/bgEditProfile"
         android:layout_marginTop="30dp">
+<!--        android:background="@color/bgEditProfile"-->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -120,15 +122,44 @@
                 android:layout_height="wrap_content"
                 android:text="Email:"/>
             <EditText
+                android:id="@+id/edit_email"
                 android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint=""/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp">
+        <!--        android:background="@color/bgEditProfile"-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password:"/>
+
+            <EditText
+                android:id="@+id/edit_password"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
 
 
 
