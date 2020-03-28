@@ -48,5 +48,17 @@ public class Profile_view extends AppCompatActivity {
 
             }
         });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Profile_view.this, MainActivity.class);
+                intent.putExtra("profileImage", "");
+                intent.putExtra("email", "");
+                intent.putExtra("name", "");
+                intent.putExtra("password", "");
+                startActivity(intent);
+            }
+        });
     }
 }

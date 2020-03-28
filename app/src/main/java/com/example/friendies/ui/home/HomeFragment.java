@@ -89,7 +89,6 @@ public class HomeFragment extends Fragment {
         String image = MainActivity.URL_IMAGE;
 
         if (!image.equals("")){
-            Toast.makeText(root.getContext(), "No", Toast.LENGTH_SHORT).show();
             Picasso.get().load(MainActivity.URL_IMAGE).into(profile);
         }
 
