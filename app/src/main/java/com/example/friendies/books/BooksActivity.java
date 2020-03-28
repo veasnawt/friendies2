@@ -114,6 +114,7 @@ public class BooksActivity extends AppCompatActivity {
                         intent.putExtra("BOOK_CATEGORY_ID", listBooks.get(position).getCategory_id());
                         intent.putExtra("BOOK_NOD", listBooks.get(position).getNod());
                         intent.putExtra("BOOK_RATING", listBooks.get(position).getRating());
+                        intent.putExtra("BOOK_PDF", listBooks.get(position).getPdf());
                         startActivity(intent);
                     }
 
@@ -166,7 +167,7 @@ public class BooksActivity extends AppCompatActivity {
                         model.setCategory_id(jsonObject.getInt("category_id"));
                         model.setNod(jsonObject.getInt("nod"));
                         //model.setRating(jsonObject.getInt("rating"));
-                        //model.setPdf(jsonObject.getString("pdf"));
+                        model.setPdf(jsonObject.getString("pdf"));
                         listBooks.add(model);
 
                         //Log

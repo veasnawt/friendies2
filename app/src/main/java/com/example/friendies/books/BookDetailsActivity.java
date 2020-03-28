@@ -61,6 +61,7 @@ public class BookDetailsActivity extends AppCompatActivity {
 //        int category_id = intent.getIntExtra("BOOK_CATEGORY_ID");
 //        int nod = intent.getIntExtra("BOOK_NOD");
 //        int rating = intent.getIntExtra("BOOK_RATING");
+        final String book_pdf = intent.getStringExtra("BOOK_PDF");
 
         Picasso.get().load(book_cover).into(img_book_cover);
         Picasso.get().load(book_image).into(imgCover);
@@ -94,7 +95,9 @@ public class BookDetailsActivity extends AppCompatActivity {
         btnRead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(BookDetailsActivity.this, PDFView.class));
+                Intent intent = new Intent(BookDetailsActivity.this, PDFView.class);
+                intent.putExtra("BOOK_PDF", book_pdf);
+                startActivity(intent);
             }
         });
 

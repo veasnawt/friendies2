@@ -180,6 +180,7 @@ public class HomeFragment extends Fragment {
                         intent.putExtra("BOOK_CATEGORY_ID", listPopularModel.get(position).getCategory_id());
                         intent.putExtra("BOOK_NOD", listPopularModel.get(position).getNod());
                         intent.putExtra("BOOK_RATING", listPopularModel.get(position).getRating());
+                        intent.putExtra("BOOK_PDF", listPopularModel.get(position).getPdf());
                         startActivity(intent);
                     }
 
@@ -202,6 +203,7 @@ public class HomeFragment extends Fragment {
                         intent.putExtra("BOOK_CATEGORY_ID", listRecentlyAddedModel.get(position).getCategory_id());
                         intent.putExtra("BOOK_NOD", listRecentlyAddedModel.get(position).getNod());
                         intent.putExtra("BOOK_RATING", listRecentlyAddedModel.get(position).getRating());
+                        intent.putExtra("BOOK_PDF", listRecentlyAddedModel.get(position).getPdf());
                         startActivity(intent);
                     }
 
@@ -224,6 +226,7 @@ public class HomeFragment extends Fragment {
                         intent.putExtra("BOOK_CATEGORY_ID", listMostDownloadsModel.get(position).getCategory_id());
                         intent.putExtra("BOOK_NOD", listMostDownloadsModel.get(position).getNod());
                         intent.putExtra("BOOK_RATING", listMostDownloadsModel.get(position).getRating());
+                        intent.putExtra("BOOK_PDF", listMostDownloadsModel.get(position).getPdf());
                         startActivity(intent);
                     }
 
@@ -246,6 +249,7 @@ public class HomeFragment extends Fragment {
                         intent.putExtra("BOOK_CATEGORY_ID", listOtherModel.get(position).getCategory_id());
                         intent.putExtra("BOOK_NOD", listOtherModel.get(position).getNod());
                         intent.putExtra("BOOK_RATING", listOtherModel.get(position).getRating());
+                        intent.putExtra("BOOK_PDF", listOtherModel.get(position).getPdf());
                         startActivity(intent);
                     }
 
@@ -277,7 +281,7 @@ public class HomeFragment extends Fragment {
                         popularItemModel.setCategory_id(jsonObject.getInt("category_id"));
                         popularItemModel.setNod(jsonObject.getInt("nod"));
                         //popularItemModel.setRating(jsonObject.getInt("rating"));
-                        //popularItemModel.setPdf(jsonObject.getString("pdf"));
+                        popularItemModel.setPdf(jsonObject.getString("pdf"));
                         listPopularModel.add(popularItemModel);
 
                         // Recently Added Item
@@ -291,7 +295,7 @@ public class HomeFragment extends Fragment {
                         model.setCategory_id(jsonObject.getInt("category_id"));
                         model.setNod(jsonObject.getInt("nod"));
                         //model.setRating(jsonObject.getInt("rating"));
-                        //model.setPdf(jsonObject.getString("pdf"));
+                        model.setPdf(jsonObject.getString("pdf"));
                         listRecentlyAddedModel.add(model);
 
                         // Most Downloads Item
@@ -305,7 +309,7 @@ public class HomeFragment extends Fragment {
                         model1.setCategory_id(jsonObject.getInt("category_id"));
                         model1.setNod(jsonObject.getInt("nod"));
                         //model1.setRating(jsonObject.getInt("rating"));
-                        //model1.setPdf(jsonObject.getString("pdf"));
+                        model1.setPdf(jsonObject.getString("pdf"));
                         listMostDownloadsModel.add(model1);
 
                         // Other Item
@@ -319,7 +323,7 @@ public class HomeFragment extends Fragment {
                         model2.setCategory_id(jsonObject.getInt("category_id"));
                         model2.setNod(jsonObject.getInt("nod"));
                         //model2.setRating(jsonObject.getInt("rating"));
-                        //model2.setPdf(jsonObject.getString("pdf"));
+                        model2.setPdf(jsonObject.getString("pdf"));
                         listOtherModel.add(model2);
 
                         //Log
