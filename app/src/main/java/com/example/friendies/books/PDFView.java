@@ -1,16 +1,26 @@
 package com.example.friendies.books;
 
-import android.graphics.Color;
+import android.content.Intent;
+import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Adapter;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.friendies.R;
-import com.github.barteksc.pdfviewer.source.AssetSource;
 
 public class PDFView extends AppCompatActivity {
 
-    com.github.barteksc.pdfviewer.PDFView pdfView;
+    private final String PDF_URL = "http://192.168.43.56:8000/pdf/";
+
+    WebView webView;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,21 +28,30 @@ public class PDFView extends AppCompatActivity {
         setContentView(R.layout.pdf_view);
         getSupportActionBar().hide();
 
-        pdfView = findViewById(R.id.pdfView);
+        webView = findViewById(R.id.web_view);
+        progressBar = findViewById(R.id.progress_bar);
+        progressBar.setVisibility(View.VISIBLE);
 
-        pdfView.fromAsset("veasnawt_cv.pdf")
-                .pages(0, 2, 1, 3, 3, 3) // all pages are displayed by default
-                .enableSwipe(true) // allows to block changing pages using swipe
-                .swipeHorizontal(false)
-                .enableDoubletap(true)
-                .defaultPage(0)
-                .enableAnnotationRendering(false) // render annotations (such as comments, colors or forms)
-                .password(null)
-                .scrollHandle(null)
-                .enableAntialiasing(true) // improve rendering a little bit on low-res screens
-                // spacing between pages in dp. To define spacing color, set view background
-                .spacing(0)
-                .invalidPageColor(Color.WHITE) // color of page that is invalid and cannot be loaded
-                .load();
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setAllowFileAccessFromFileURLs(true);
+        webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false);
+        webView.setWebChromeClient(new WebChromeClient());
+
+        Intent intent = getIntent();
+        String book_pdf = intent.getStringExtra("BOOK_PDF");
+        String pdf_path = PDF_URL + book_pdf;
+
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                webView.loadUrl("javascript:(function() [ " +
+                        "document.querySelector('[role=\"toolbar\"]').remove();])()");
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+        webView.loadUrl("https://docs.google.com/viewer?url=" + pdf_path);
     }
+
 }
