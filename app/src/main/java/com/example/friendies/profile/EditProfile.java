@@ -16,7 +16,7 @@ public class EditProfile extends AppCompatActivity {
 
     ImageView edit_profile;
     TextView btn_cancel, btn_done;
-    EditText ed_email, ed_username, ed_password;
+    EditText ed_email, ed_username, ed_new_password, ed_old_password;
 
     private final String URL_EditProfile = "";
 
@@ -29,7 +29,8 @@ public class EditProfile extends AppCompatActivity {
         btn_cancel = findViewById(R.id.btn_cancel_edit);
         btn_done = findViewById(R.id.btn_done_edit);
         ed_email = findViewById(R.id.edit_email);
-        ed_password = findViewById(R.id.edit_password);
+        ed_new_password= findViewById(R.id.edit_new_password);
+        ed_old_password = findViewById(R.id.edit_old_password);
         ed_username = findViewById(R.id.edit_username);
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {

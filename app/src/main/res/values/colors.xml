@@ -9,4 +9,5 @@
     <color name="textCancelAndDone">#1B63F4</color>
 
     <color name="bgEditProfile">#DDDBDB</color>
+    <color name="black">#000</color>
 </resources>
