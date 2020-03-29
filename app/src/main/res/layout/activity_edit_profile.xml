@@ -125,43 +125,25 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/btn_change_password"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_edit"/>
             <TextView
                 android:textSize="16sp"
                 android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Old Password"/>
-            <EditText
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:layout_gravity="center"
-                android:id="@+id/edit_old_password"
-                android:layout_width="380dp"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:textSize="16sp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="New Password"/>
-                <EditText
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center"
-                    android:id="@+id/edit_new_password"
-                    android:layout_width="380dp"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                android:text="Change password"/>
+
         </LinearLayout>
     </LinearLayout>
+</LinearLayout>
 

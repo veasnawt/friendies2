@@ -29,9 +29,9 @@ public class EditProfile extends AppCompatActivity {
         btn_cancel = findViewById(R.id.btn_cancel_edit);
         btn_done = findViewById(R.id.btn_done_edit);
         ed_email = findViewById(R.id.edit_email);
-        ed_new_password= findViewById(R.id.edit_new_password);
-        ed_old_password = findViewById(R.id.edit_old_password);
         ed_username = findViewById(R.id.edit_username);
+
+        getSupportActionBar().hide();
 
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
