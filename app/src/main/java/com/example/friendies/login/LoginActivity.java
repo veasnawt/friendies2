@@ -117,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String mPassword = jsonObject.getString("password");
                                 String mProfileImage = jsonObject.getString("profileImg");
                                 String mName = jsonObject.getString("name");
+                                int id = jsonObject.getInt("id");
                                 if (Email.equals(mEmail) && password.equals(mPassword)){
                                     Toast.makeText(LoginActivity.this,"Login successful", Toast.LENGTH_SHORT).show();
                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -124,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                                    intent.putExtra("email", mEmail);
                                    intent.putExtra("name", mName);
                                    intent.putExtra("password", mPassword);
+                                   intent.putExtra("id", id);
                                    startActivity(intent);
                                    tr=1;
                                     break;

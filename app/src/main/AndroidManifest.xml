@@ -14,7 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".profile.ChangePassword"></activity>
         <activity android:name=".profile.UseSingOutAccount" />
         <activity android:name=".profile.SwitchAccount" />
         <activity android:name=".profile.EditProfile" />

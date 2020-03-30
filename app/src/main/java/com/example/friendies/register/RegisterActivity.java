@@ -108,11 +108,11 @@ public class RegisterActivity extends AppCompatActivity {
                                         String success = jsonObject.getString("success");
                                         if (success.equals("1")) {
                                             Toast.makeText(RegisterActivity.this, "Register Success!", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                            intent.putExtra("profileImage", "");
-                                            intent.putExtra("email", email);
-                                            intent.putExtra("name", name);
-                                            intent.putExtra("password", password);
+                                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+//                                            intent.putExtra("profileImage", "");
+//                                            intent.putExtra("email", email);
+//                                            intent.putExtra("name", name);
+//                                            intent.putExtra("password", password);
                                             startActivity(intent);
                                         }
                                     } catch (JSONException e) {
@@ -151,7 +151,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Confirm password is incorrect", Toast.LENGTH_LONG).show();
                 }
             }else {
-                Toast.makeText(RegisterActivity.this, "Soryy This email is tooken"+TestEmailIsExist(email), Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "Sorry This email is tooken"+TestEmailIsExist(email), Toast.LENGTH_SHORT).show();
             }
 
         }

@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainActivity extends AppCompatActivity {
 
     public static String EMAIL, NAME, PASSWORD, URL_IMAGE;
+    public static int ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         NAME = intent.getStringExtra("name");
         PASSWORD = intent.getStringExtra("password");
         URL_IMAGE = intent.getStringExtra("profileImage");
+        ID = intent.getIntExtra("id",0);
+
 
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
