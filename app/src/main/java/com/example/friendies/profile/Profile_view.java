@@ -7,13 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.friendies.MainActivity;
 import com.example.friendies.R;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Profile_view extends AppCompatActivity {
     Button btn_cancel;
     LinearLayout edit_profile, switch_account, setting, data, logout, help;
+    CircleImageView profileImage;
+    TextView profile_username, profile_email;
 
 
     @Override
@@ -28,6 +34,15 @@ public class Profile_view extends AppCompatActivity {
         data = findViewById(R.id.data);
         logout = findViewById(R.id.logout);
         help = findViewById(R.id.help);
+        profileImage = findViewById(R.id.profile_image);
+        profile_email = findViewById(R.id.profile_email);
+        profile_username = findViewById(R.id.profile_username);
+
+        if (!MainActivity.URL_IMAGE.equals("")){
+            Picasso.get().load(MainActivity.URL_IMAGE).into(profileImage);
+            profile_username.setText(MainActivity.NAME);
+            profile_email.setText(MainActivity.EMAIL);
+        }
 
         getSupportActionBar().hide();
         btn_cancel.setOnClickListener(new View.OnClickListener() {

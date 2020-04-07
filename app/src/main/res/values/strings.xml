@@ -22,4 +22,10 @@
 
 
     <string name="search">Search</string>
+
+    <string-array name="camera">
+        <item></item>
+        <item>Take Photo</item>
+        <item>Choose Photo</item>
+    </string-array>
 </resources>

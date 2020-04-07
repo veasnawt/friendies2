@@ -13,10 +13,13 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,12 +28,15 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.friendies.MainActivity;
 import com.example.friendies.R;
 import com.example.friendies.login.LoginActivity;
+import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,18 +47,20 @@ import java.util.Map;
 
 import kotlin.UByteArray;
 
-public class EditProfile extends AppCompatActivity {
+public class EditProfile extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     ImageView edit_profile, profile_img;
     TextView btn_cancel, btn_done;
     EditText ed_email, ed_username;
     LinearLayout btn_change_password;
+    Spinner spinner;
 
 
     private String newEmail = MainActivity.EMAIL;
     private String newUsername = MainActivity.NAME;
 
     private String newPassword = MainActivity.PASSWORD;
+
     private String imgUrlToString = MainActivity.URL_IMAGE;
 
     private Bitmap bitmap;
@@ -62,20 +70,23 @@ public class EditProfile extends AppCompatActivity {
     private static final int CHANGE_PASSWORD = 1001;
 
     private final static String URL_EDIT = "http://192.168.0.112:8000/api/user/edit/";
+    private final static String URL_LOGIN = "http://192.168.0.112:8000/api/user/show/";
 
     Uri imgUri;
     int getId;
+
+
+    boolean x = true;
 
 
 
     private final String URL_EditProfile = "";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        edit_profile = findViewById(R.id.edit_img);
         profile_img = findViewById(R.id.profile_image);
         btn_cancel = findViewById(R.id.btn_cancel_edit);
         btn_done = findViewById(R.id.btn_done_edit);
@@ -83,7 +94,19 @@ public class EditProfile extends AppCompatActivity {
         ed_username = findViewById(R.id.edit_username);
         btn_change_password = findViewById(R.id.btn_change_password);
         ed_email.setText(newEmail);
+
+        spinner = findViewById(R.id.spinner_camera);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.camera, R.layout.support_simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
         ed_username.setText(newUsername);
+
+
+        if (!MainActivity.URL_IMAGE.equals("")){
+            Picasso.get().load(MainActivity.URL_IMAGE).into(profile_img);
+        }
 
         btn_change_password.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,19 +135,16 @@ public class EditProfile extends AppCompatActivity {
             public void onClick(View v) {
                 newEmail = ed_email.getText().toString().trim();
                 newUsername = ed_username.getText().toString().trim();
-
                 editProfile(getId,imgUrlToString,newEmail,newUsername,newPassword);
+
+//                if (test(x)){
+//                    upData();
+//                    startActivity(new Intent(EditProfile.this,Profile_view.class));
+//                }
+
+
             }
         });
-
-        edit_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openGallery();
-            }
-        });
-
-
 
 
     }
@@ -177,7 +197,7 @@ public class EditProfile extends AppCompatActivity {
         ByteArrayOutputStream baos=new  ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG,100, baos);
         byte[] b=baos.toByteArray();
-        String temp= Base64.encodeToString(b, Base64.DEFAULT);
+        String temp = Base64.encodeToString(b, Base64.DEFAULT);
         return temp;
     }
 
@@ -198,6 +218,7 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
+                x = false;
                 Toast.makeText(EditProfile.this, "Try again" + error, Toast.LENGTH_LONG).show();
             }
         }){
@@ -215,4 +236,52 @@ public class EditProfile extends AppCompatActivity {
         requestQueue.add(request);
     }
 
+    private void upData(){
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, URL_LOGIN, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray jsonArray = response.getJSONArray("dataById");
+                    JSONObject jsonObject = jsonArray.getJSONObject(0);
+                    String Email = jsonObject.getString("email");
+                    String Password = jsonObject.getString("password");
+                    String ProfileImg = jsonObject.getString("profileImg");
+                    String Name = jsonObject.getString("name");
+
+                    MainActivity.EMAIL = Email;
+                    MainActivity.PASSWORD = Password;
+                    MainActivity.URL_IMAGE = ProfileImg;
+                    MainActivity.NAME = Name;
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        Volley.newRequestQueue(this).add(jsonObjectRequest);
+    }
+
+    public boolean test(boolean x){
+        return x;
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        ((TextView)view).setText(null);
+        if (text.equals("Take Photo")) openCam();
+        else if (text.equals("Choose Photo")) openGallery();
+
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }
