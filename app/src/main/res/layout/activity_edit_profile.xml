@@ -143,6 +143,11 @@
                 android:text="Change password"/>
 
         </LinearLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/test"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </LinearLayout>
 

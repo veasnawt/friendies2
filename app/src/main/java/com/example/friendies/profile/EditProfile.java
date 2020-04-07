@@ -51,7 +51,7 @@ public class EditProfile extends AppCompatActivity implements AdapterView.OnItem
 
     ImageView edit_profile, profile_img;
     TextView btn_cancel, btn_done;
-    EditText ed_email, ed_username;
+    EditText ed_email, ed_username, tv_test;
     LinearLayout btn_change_password;
     Spinner spinner;
 
@@ -94,6 +94,7 @@ public class EditProfile extends AppCompatActivity implements AdapterView.OnItem
         ed_username = findViewById(R.id.edit_username);
         btn_change_password = findViewById(R.id.btn_change_password);
         ed_email.setText(newEmail);
+        tv_test= findViewById(R.id.test);
 
         spinner = findViewById(R.id.spinner_camera);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.camera, R.layout.support_simple_spinner_dropdown_item);
@@ -135,14 +136,12 @@ public class EditProfile extends AppCompatActivity implements AdapterView.OnItem
             public void onClick(View v) {
                 newEmail = ed_email.getText().toString().trim();
                 newUsername = ed_username.getText().toString().trim();
-                editProfile(getId,imgUrlToString,newEmail,newUsername,newPassword);
+                editProfile(getId, imgUrlToString, newEmail, newUsername, newPassword);
 
-//                if (test(x)){
-//                    upData();
-//                    startActivity(new Intent(EditProfile.this,Profile_view.class));
-//                }
-
-
+                if (test(x)){
+                    upData();
+                    startActivity(new Intent(EditProfile.this,Profile_view.class));
+                 }
             }
         });
 
@@ -183,9 +182,9 @@ public class EditProfile extends AppCompatActivity implements AdapterView.OnItem
 
         }
         else if(requestCode ==CAMERA_PIC_REQUEST){
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
-            profile_img.setImageBitmap(photo);
-            imgUrlToString = BitMapToString(photo);
+            bitmap = (Bitmap) data.getExtras().get("data");
+            profile_img.setImageBitmap(bitmap);
+            imgUrlToString = BitMapToString(bitmap);
         }
         else if (requestCode == CHANGE_PASSWORD){
             newPassword = data.getStringExtra("NewPassword");
@@ -276,6 +275,7 @@ public class EditProfile extends AppCompatActivity implements AdapterView.OnItem
         ((TextView)view).setText(null);
         if (text.equals("Take Photo")) openCam();
         else if (text.equals("Choose Photo")) openGallery();
+
 
 
     }
