@@ -1,14 +1,25 @@
 package com.example.friendies.books;
 
+import android.Manifest;
+import android.app.DownloadManager;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,10 +38,13 @@ public class BookDetailsActivity extends AppCompatActivity {
     UserRatingsAdapter userRatingsAdapter;
 
     ImageView imgBack;
-    Button btnRead;
+    Button btnRead, btnDownload;
 
     ImageView img_book_cover, imgCover;
     TextView title, author, description, category, nod, rating;
+
+    private static final int WRITE_PERMISSION = 1001;
+    private final String PDF_URL = "http://192.168.43.56:8000/pdf/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +56,7 @@ public class BookDetailsActivity extends AppCompatActivity {
 
         imgBack = findViewById(R.id.imgBack);
         btnRead = findViewById(R.id.btnRead);
+        btnDownload = findViewById(R.id.btnDownload);
 
         img_book_cover = findViewById(R.id.img_book_cover);
         imgCover = findViewById(R.id.books_imgCover);
@@ -101,5 +116,71 @@ public class BookDetailsActivity extends AppCompatActivity {
             }
         });
 
+        btnDownload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if(ContextCompat.checkSelfPermission(BookDetailsActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                        String fileName = book_pdf;
+                        downloadFile(fileName, PDF_URL + book_pdf);
+                    }else {
+                        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
+
+                    }
+                }
+            }
+        });
+
+    }
+
+    private void downloadFile(String fileName, String url) {
+        Intent intent = getIntent();
+        String book_pdf = intent.getStringExtra("BOOK_PDF");
+        Uri downloadUri = Uri.parse(PDF_URL + book_pdf);
+        DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+        try {
+            if(downloadManager != null) {
+                DownloadManager.Request request = new DownloadManager.Request(downloadUri);
+                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE)
+                        .setTitle(fileName)
+                        .setDescription("Downloading " + fileName)
+                        .setAllowedOverMetered(true)
+                        .setAllowedOverRoaming(true)
+                        .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                        .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName)
+                        .setMimeType(getMimeType(downloadUri));
+                downloadManager.enqueue(request);
+                Toast.makeText(this, "Downloading " + book_pdf + "...", Toast.LENGTH_SHORT).show();
+            }else {
+                Intent intent1 = new Intent(Intent.ACTION_VIEW, downloadUri);
+                startActivity(intent1);
+            }
+
+        }catch (Exception e) {
+            Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show();
+            Log.e("Error:MAIN", "E: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == WRITE_PERMISSION) {
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Intent intent = getIntent();
+                String book_pdf = intent.getStringExtra("BOOK_PDF");
+                String fileName = book_pdf;
+                downloadFile(fileName, PDF_URL + book_pdf);
+            }else {
+                Toast.makeText(this, "Download Failed!", Toast.LENGTH_SHORT).show();
+
+            }
+        }
+    }
+
+    private String getMimeType(Uri uri) {
+        ContentResolver resolver = getContentResolver();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        return mimeTypeMap.getExtensionFromMimeType(resolver.getType(uri));
     }
 }
