@@ -3,6 +3,7 @@ package com.example.friendies.books;
 import android.Manifest;
 import android.app.DownloadManager;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -18,24 +19,46 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.friendies.R;
-import com.example.friendies.adapter.BooksAdapter;
 import com.example.friendies.adapter.UserRatingsAdapter;
+import com.example.friendies.model.DownloadsModel;
 import com.example.friendies.model.UserRatingsModel;
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class BookDetailsActivity extends AppCompatActivity {
 
+
+    static BookDetailsActivity INSTANCE;
+
     RecyclerView recyclerviewUserRatings;
     ArrayList<UserRatingsModel> listUserRatingsModel;
     UserRatingsAdapter userRatingsAdapter;
+
+    ArrayList<DownloadsModel> listDownloadsModel;
 
     ImageView imgBack;
     Button btnRead, btnDownload;
@@ -46,13 +69,30 @@ public class BookDetailsActivity extends AppCompatActivity {
     private static final int WRITE_PERMISSION = 1001;
     private final String PDF_URL = "http://192.168.43.56:8000/pdf/";
 
+    int timesDownloaded = 0;
+
+    String reqDownload = "no_req_download";
+
+    DownloadsModel model = new DownloadsModel();
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        INSTANCE = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.book_details);
         getSupportActionBar().hide();
 
+        doStuffs();
+        readJson();
+    }
+
+
+    public void doStuffs() {
+
         recyclerviewUserRatings = findViewById(R.id.recylerview_user_ratings);
+
+        listDownloadsModel = new ArrayList<>();
 
         imgBack = findViewById(R.id.imgBack);
         btnRead = findViewById(R.id.btnRead);
@@ -68,11 +108,11 @@ public class BookDetailsActivity extends AppCompatActivity {
         rating = findViewById(R.id.books_txtRatings);
 
         Intent intent = getIntent();
-        String book_cover = intent.getStringExtra("BOOK_COVER");
-        String book_image = intent.getStringExtra("BOOK_IMAGE");
-        String book_title = intent.getStringExtra("BOOK_TITLE");
-        String book_author = intent.getStringExtra("BOOK_AUTHOR");
-        String book_description = intent.getStringExtra("BOOK_DESCRIPTION");
+        final String book_cover = intent.getStringExtra("BOOK_COVER");
+        final String book_image = intent.getStringExtra("BOOK_IMAGE");
+        final String book_title = intent.getStringExtra("BOOK_TITLE");
+        final String book_author = intent.getStringExtra("BOOK_AUTHOR");
+        final String book_description = intent.getStringExtra("BOOK_DESCRIPTION");
 //        int category_id = intent.getIntExtra("BOOK_CATEGORY_ID");
 //        int nod = intent.getIntExtra("BOOK_NOD");
 //        int rating = intent.getIntExtra("BOOK_RATING");
@@ -115,14 +155,104 @@ public class BookDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         btnDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if(ContextCompat.checkSelfPermission(BookDetailsActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+
                         String fileName = book_pdf;
                         downloadFile(fileName, PDF_URL + book_pdf);
+
+//                        Intent intent = new Intent(BookDetailsActivity.this, DownloadFragment.class);
+//                        intent.putExtra("BOOK_TITLE", book_title);
+//                        intent.putExtra("BOOK_IMAGE", book_image);
+//                        intent.putExtra("BOOK_COVER", book_cover);
+//                        intent.putExtra("BOOK_AUTHOR", book_author);
+//                        intent.putExtra("BOOK_DESCRIPTOIN", book_description);
+//                        intent.putExtra("BOOK_PDF", book_pdf);
+//                        intent.putExtra("MSG", "req_download");
+//                        startActivity(intent);
+                            DownloadsModel model = new DownloadsModel();
+                            model.setImage(book_image);
+                            model.setTitle(book_title);
+                            model.setCategory("Fantasy");
+                            model.setDownloadStatus("Downloaded");
+
+                            String filename = "downloaded_books.json";
+                            Gson gson = new Gson();
+                            String json = gson.toJson(model);
+
+                            File file = new File(BookDetailsActivity.this.getFilesDir(), filename);
+
+                            try {
+                                file.createNewFile(); // if file already exists will do nothing
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            //START FIS
+                            try {
+                                FileInputStream fis = BookDetailsActivity.this.openFileInput(filename);
+                                InputStreamReader inputStreamReader =
+                                        new InputStreamReader(fis, StandardCharsets.UTF_8);
+                                StringBuilder stringBuilder = new StringBuilder();
+                                try(BufferedReader reader = new BufferedReader(inputStreamReader)) {
+                                    String line = reader.readLine();
+                                    while (line != null) {
+                                        stringBuilder.append(line).append('\n');
+                                        line = reader.readLine();
+                                    }
+                                    if(stringBuilder.length() != 0 ) {
+
+                                        if (stringBuilder.length() > 0) {
+                                            int last, prev = stringBuilder.length() - 1;
+                                            while ((last = stringBuilder.lastIndexOf("\n", prev)) == prev) { prev = last - 1; }
+                                            if (last >= 0) { stringBuilder.delete(last, stringBuilder.length()); }
+                                        }
+
+                                        String data = stringBuilder + ",\n" + json + "\n]";
+
+                                        //START FOS
+
+                                        try (FileOutputStream fos = BookDetailsActivity.this.openFileOutput(filename, Context.MODE_PRIVATE)) {
+                                            fos.write(data.getBytes());
+                                        } catch (FileNotFoundException e) {
+                                            e.printStackTrace();
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+
+
+                                        //END FOS
+                                    } else {
+                                        //START FOS
+
+                                        try (FileOutputStream fos = BookDetailsActivity.this.openFileOutput(filename, Context.MODE_PRIVATE)) {
+                                            fos.write(("[\n" + json + "\n]" ).getBytes());
+                                        } catch (FileNotFoundException e) {
+                                            e.printStackTrace();
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+
+
+                                        //END FOS
+                                    }
+
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+
+                            //END FIS
+
+                        reqDownload = "req_download";
+
+
                     }else {
                         requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_PERMISSION);
 
@@ -130,7 +260,23 @@ public class BookDetailsActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    public void readJson() {
+        Gson gson = new Gson();
+
+        // JSON file to Java object
+        try {
+            Object object = gson.fromJson(new FileReader("/data/data/com.example.friendies/files/downloaded_books.json"), Object.class);
+
+            String jsonString = object.toString();
+
+            Log.d("READ_JSON", "readJson: " + jsonString);
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void downloadFile(String fileName, String url) {
@@ -182,5 +328,19 @@ public class BookDetailsActivity extends AppCompatActivity {
         ContentResolver resolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(resolver.getType(uri));
+    }
+
+    public static BookDetailsActivity getActivityInstance()
+    {
+        return INSTANCE;
+    }
+
+    public ArrayList<DownloadsModel> getData()
+    {
+        return this.listDownloadsModel;
+    }
+
+    public String getReqDownload() {
+        return this.reqDownload;
     }
 }

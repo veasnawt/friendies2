@@ -38,8 +38,10 @@ public class RegisterActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private boolean testEmail=true;
 
-    private static String URL_REGISTER="http://192.168.0.112:8000/api/user/create";
-    private static String URL_LOGIN="http://192.168.0.112:8000/api/user/show";
+//    private static String URL_REGISTER="http://192.168.0.112:8000/api/user/create";
+//    private static String URL_LOGIN="http://192.168.0.112:8000/api/user/show";
+private static String URL_REGISTER="http://192.168.43.56:8000/api/user/create";
+    private static String URL_LOGIN="http://192.168.43.56:8000/api/user/show";
 
 
     @Override
@@ -100,6 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (TestEmailIsExist(email)){
                 if (password.equals(c_password)){
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGISTER,
+
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {

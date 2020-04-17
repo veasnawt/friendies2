@@ -41,7 +41,9 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar loading;
     private RequestQueue mQueue;
 
-    private final static String URL_LOGIN="http://192.168.0.112:8000/api/user/show";
+//    private final static String URL_LOGIN="http://192.168.0.112:8000/api/user/show";
+
+    private final static String URL_LOGIN="http://192.168.43.56:8000/api/user/show";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

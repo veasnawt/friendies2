@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
         URL_IMAGE = intent.getStringExtra("profileImage");
         ID = intent.getIntExtra("id",0);
 
-
-
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

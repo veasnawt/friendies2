@@ -51,7 +51,8 @@ public class PDFView extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
             }
         });
-        webView.loadUrl("https://docs.google.com/viewer?url=" + pdf_path);
+//        webView.loadUrl("https://docs.google.com/viewer?url=" + pdf_path);
+        webView.loadUrl("https://docs.google.com/viewer?url=" + "https://www.lfpl.org/pdf/AMFAQ.pdf");
     }
 
 }

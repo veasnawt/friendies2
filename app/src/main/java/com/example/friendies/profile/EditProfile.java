@@ -69,8 +69,8 @@ public class EditProfile extends AppCompatActivity implements AdapterView.OnItem
     private static final int CAMERA_PIC_REQUEST = 1337;
     private static final int CHANGE_PASSWORD = 1001;
 
-    private final static String URL_EDIT = "http://192.168.0.112:8000/api/user/edit/";
-    private final static String URL_LOGIN = "http://192.168.0.112:8000/api/user/show/";
+    private final static String URL_EDIT = "http://192.168.43.56:8000/api/user/edit/";
+    private final static String URL_LOGIN = "http://192.168.43.56:8000/api/user/show/";
 
     Uri imgUri;
     int getId;
@@ -138,10 +138,10 @@ public class EditProfile extends AppCompatActivity implements AdapterView.OnItem
                 newUsername = ed_username.getText().toString().trim();
                 editProfile(getId, imgUrlToString, newEmail, newUsername, newPassword);
 
-                if (test(x)){
+
                     upData();
                     startActivity(new Intent(EditProfile.this,Profile_view.class));
-                 }
+                 
             }
         });
 
